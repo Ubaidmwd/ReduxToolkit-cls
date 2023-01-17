@@ -1,22 +1,23 @@
-import { createReducer } from "@reduxjs/toolkit"
-const initialstate={
-    name:"ubaid",
+import { createReducer,createSlice } from "@reduxjs/toolkit"
+const initialState={
+    userName:"ubaid",
     age:"24",
     status:"coder"
 }
 
-// export const userData = (state= initialstate, action) => {
-//   if(action.type=='UPDATE'){
-//     return {
-//         ...state,
-//         age:action.payload}
 
-//   }
-//   return state;
-// }
-
-export const userData= createReducer(initialstate,(builder)=>{
-    builder.addCase('UPDATE',(state,action)=>{
-        state.age=action.payload
-    })
+const userData=createSlice({
+    name:"users",
+    initialState,
+    reducers:{
+        updateName(state,action){
+            state.userName=action.payload
+        },
+        updateAge(state,action){
+            state.age=action.payload
+        }
+    }
 })
+
+export const { updateName,updateAge} = userData.actions
+export default userData.reducer
