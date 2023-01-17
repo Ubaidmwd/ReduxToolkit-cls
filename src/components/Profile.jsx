@@ -3,12 +3,10 @@ import { useSelector,useDispatch } from 'react-redux'
 import { userUpdate } from '../actions/useraction'
 
 const Profile = () => {
-    const {name,age,status}=useSelector((state)=>{return state})
+    const {name,age,status}=useSelector((state)=>{return state.userData})
     const dispatch=useDispatch()
     const update=(age)=>{
         dispatch(userUpdate(age))
-        
-
     }
 
 
