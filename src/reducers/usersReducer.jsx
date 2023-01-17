@@ -1,10 +1,9 @@
-import { createReducer,createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
 const initialState={
     userName:"ubaid",
     age:"24",
     status:"coder"
 }
-
 
 const userData=createSlice({
     name:"users",
