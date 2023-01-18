@@ -1,10 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice ,createAsyncThunk} from "@reduxjs/toolkit"
 const initialState={
     userName:"ubaid",
     age:"24",
     status:"coder"
 }
-
+const fetchUsersName = createAsyncThunk(
+    'users/fetchByIdStatus',
+    async (userId: name, thunkAPI) => {
+      const response = await userAPI.fetchById(userId)
+      return response.data
+    })
+  
 const userData=createSlice({
     name:"users",
     initialState,
