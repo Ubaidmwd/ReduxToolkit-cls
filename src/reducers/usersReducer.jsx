@@ -4,11 +4,14 @@ const initialState={
     age:"24",
     status:"coder"
 }
-const fetchUsersName = createAsyncThunk(
-    'users/fetchByIdStatus',
-    async (userId: name, thunkAPI) => {
-      const response = await userAPI.fetchById(userId)
-      return response.data
+export const fetchUsersName = createAsyncThunk(
+    'fetchUsers',
+    async () => {
+        const res=await fetch('https://jsonplaceholder.typicode.com/users')
+        const res2=await res.json()
+    //   const response = await userAPI.fetchById(userId)
+    //   return response.data
+        return res2[0].name
     })
   
 const userData=createSlice({
@@ -21,6 +24,13 @@ const userData=createSlice({
         updateAge(state,action){
             state.age=action.payload
         }
+    },
+    extraReducers:{
+
+    [fetchUsersName.fulfilled]:(state, action) => {
+        
+        state.userName=action.payload
+      }
     }
 })
 
